@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style type="text/css">
     .tright{text-align:right;}
     .center{text-align:center;}
@@ -21,7 +22,7 @@
         let startTs = new Date()
         setInterval(
             function () {
-                document.getElementById('timer').innerHTML = '<h3>Próxima mensagem em: '+cnt+' segundos</h3>';
+                document.getElementById('timer').innerHTML = 'Próxima mensagem em: '+cnt+' segundos';
                 cnt--;
             }, 1000);   
         
@@ -60,7 +61,7 @@
                     
                 }
                
-                line = '<h2>'+value+' | Visto em '+data.lastSeenTime+'</h2>'
+                line = value+' | Visto em '+data.lastSeenTime
                 cnt = 10;
                 
                 // replace the messages div with the new "line"
@@ -96,11 +97,13 @@
         <div class="row row-center">
         <div class="column">
         <font face="Arial">
-        <h1>Botanico Claro Bot</h1>
-        <div id="messages" class="center"><h2>Aguardando menssagem...</h2></div>
+        <h1>Botanico ISP Check</h1>
+        <div id="messages" class="center">Aguardando menssagem...</div>
         <div id="timer"></div>
+        <!--
         <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIxey6krnl99PojVXz7dhkyoma8cGCCo6SgEUKODiGwn3exiJQPylRKZ5wKnpzS9nm0TxOfhiryJG1/pubchart?oid=24811961&amp;format=image" />
         <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIxey6krnl99PojVXz7dhkyoma8cGCCo6SgEUKODiGwn3exiJQPylRKZ5wKnpzS9nm0TxOfhiryJG1/pubchart?oid=1062670958&amp;format=image" />
+        -->
         <!--
         <button type="button" onclick='doit("click");'>Click to send message</button>
         -->
