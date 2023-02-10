@@ -2,6 +2,21 @@ body{
     background-color: #2a2e39;
 }
 
+.logo{
+    background-image: url("/images/logo.png");
+    background-repeat: no-repeat;
+    background-size: 270px 34px;
+    min-width: 270px;
+    height: 34px;
+    background-position: 50% center;
+    /*left: calc(50% - 117px);*/
+    padding: 35px 0px;
+}
+
 .container{
     max-width: 320px;
+}
+
+h1 {
+    display: none;
 }
