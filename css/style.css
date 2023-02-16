@@ -18,6 +18,18 @@ body {
   padding: 0;
 }
 
+.c {
+  text-align: center;
+}
+
+.l {
+  text-align: left;
+}
+
+.r {
+  text-align: right;
+}
+
 h1 {
   display: none;
 }
@@ -26,4 +38,5 @@ header {
   background-color: rgb(6, 110, 228);
   margin: 10px 0;
   color: white;
+  text-align: center;
 }

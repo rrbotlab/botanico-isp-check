@@ -12,29 +12,21 @@
       href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <style type="text/css">
-      .tright {
-        text-align: right;
-      }
-      .center {
-        text-align: center;
-      }
-    </style>
     <script type="text/javascript">
-      var ws;
-      var wsUri = 'ws:';
-      var loc = window.location;
+      let ws;
+      let wsUri = 'ws:';
+      let loc = window.location;
       console.log(loc);
       if (loc.protocol === 'https:') {
         wsUri = 'wss:';
       }
       wsUri += 'cubo-lab.mybluemix.net/ws/pico-ping';
-      let cnt = 10;
+      let cnt = 0;
       let startTs = new Date();
       setInterval(function () {
         document.getElementById('timer').innerHTML =
-          'Próxima mensagem em: ' + cnt + ' segundos';
-        cnt--;
+          'último ping: ' + cnt + ' segundos';
+        cnt++;
       }, 1000);
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -46,15 +38,15 @@
         console.log('connect', wsUri);
         ws = new WebSocket(wsUri);
 
-        //var line = "";    // either uncomment this for a building list of messages
+        //let line = "";    // either uncomment this for a building list of messages
         ws.onmessage = function (msg) {
-          var line = ''; // or uncomment this to overwrite the existing message
+          let line = ''; // or uncomment this to overwrite the existing message
           // parse the incoming message as a JSON object
 
-          // var sp1 = (new Date(parseInt(msg.data))).toLocaleString([], {timeZone: 'America/Sao_Paulo'});
-          // var sp2 = (new Date(parseInt(msg.data))).toLocaleString([], {timeZone: 'UTC'});
+          // let sp1 = (new Date(parseInt(msg.data))).toLocaleString([], {timeZone: 'America/Sao_Paulo'});
+          // let sp2 = (new Date(parseInt(msg.data))).toLocaleString([], {timeZone: 'UTC'});
 
-          console.log(msg);
+          // console.log(msg);
 
           data = JSON.parse(msg.data);
 
@@ -65,7 +57,7 @@
           }
 
           line = value + ' | Visto em ' + data.lastSeenTime;
-          cnt = 10;
+          cnt = 0;
 
           // replace the messages div with the new "line"
           document.getElementById('messages').innerHTML = line;
@@ -96,23 +88,40 @@
     </script>
   </head>
   <body onunload="ws.disconnect();">
-    <div class="container center">
+    <div class="container">
       <h1>Botanico Internet Check</h1>
       <div class="logo"></div>
       <section class="status">
-        <header>Status</header>
-        <div id="messages" class="center">Aguardando menssagem...</div>
-        <div id="timer"></div>
+        <header>Status da Internet</header>
+        <div id="messages" class="c">Aguardando menssagem...</div>
+        <div id="timer" class="c"></div>
       </section>
       <section class="graph">
         <header>Métricas</header>
         <img
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIxey6krnl99PojVXz7dhkyoma8cGCCo6SgEUKODiGwn3exiJQPylRKZ5wKnpzS9nm0TxOfhiryJG1/pubchart?oid=888744699&format=image"
+        /><img
           src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIxey6krnl99PojVXz7dhkyoma8cGCCo6SgEUKODiGwn3exiJQPylRKZ5wKnpzS9nm0TxOfhiryJG1/pubchart?oid=24811961&amp;format=image"
+        /><img
+          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSIxey6krnl99PojVXz7dhkyoma8cGCCo6SgEUKODiGwn3exiJQPylRKZ5wKnpzS9nm0TxOfhiryJG1/pubchart?oid=815733979&format=image"
         />
+      </section>
+      <section>
+        <header>Sobre</header>
+        <p>
+          Este webapp tem o proposito de monitorar o serviço de internet
+          instalado em uma unidade do condominio Jd. Botanico/Santo Amaro São
+          Paulo-SP.
+        </p>
+        <p>
+          O provedor atual é Claro e o monitoramento é realizado a nível
+          cliente/consumidor sem nenhum outro vínculo.
+        </p>
+        <p>O serviço é disponibilizado sem nenhum tipo de garantia.</p>
       </section>
       <section class="footer">
         <header>Status do Servidor</header>
-        <div id="status" class="tright">🔴 servidor desconectado</div>
+        <div id="status" class="r">🔴 servidor desconectado</div>
       </section>
     </div>
 
