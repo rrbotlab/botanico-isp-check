@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/74f03967-4381-4474-9cdb-3a7b2f6efb36/deploy-status)](https://app.netlify.com/sites/botanico/deploys)
+
 # botanico-isp-check
 Monitoramento de serviço de internet
 
